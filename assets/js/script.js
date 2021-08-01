@@ -1,5 +1,12 @@
 const currentDayEl = $("#currentDay");
 const timeBlocksEl = $("#timeBlocks");
+const clearButtonEl = $("#clearPlanner");
+
+clearButtonEl.on("click", "button", function (event) {
+  event.preventDefault();
+  localStorage.clear();
+  location.reload();
+});
 
 let thisDay = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 currentDayEl.html(thisDay);
@@ -113,7 +120,7 @@ function setTimeBlock(hour, index) {
     )
   );
   let newSaveButton = $(
-    `<button class="saveBtn"><i class="fas fa-book fa-x"></i></button>"`
+    `<button class="saveBtn"><i class="fas fa-book fa-x"></i></button>`
   );
 
   newTimeBlock.append(newSaveButton).on("click", "button", function (event) {
@@ -155,3 +162,12 @@ function setUserInput(reference, data) {
   savedTasks[index].push(data);
   localStorage.setItem(taskLists[index], JSON.stringify(savedTasks[index]));
 }
+
+function init() {
+  for (i = 0; i < savedTasks.length; i++) {
+    savedTasks[i].forEach(function () {
+      $("#hr-" + i).html(savedTasks[i]);
+    });
+  }
+}
+init();
