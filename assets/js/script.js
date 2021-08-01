@@ -1,12 +1,12 @@
 const currentDayEl = $("#currentDay");
-const timeBlocksEl = $("#timeBlocks");
+const timeBlocksEl = $("#timeBlocks"); /*
 const clearButtonEl = $("#clearPlanner");
 
 clearButtonEl.on("click", "button", function (event) {
   event.preventDefault();
   localStorage.clear();
   location.reload();
-});
+});*/
 
 let thisDay = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 currentDayEl.html(thisDay);
