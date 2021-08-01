@@ -7,7 +7,21 @@ let timeClock = setInterval(function () {
   thisDay = moment().format("dddd, DD MMM YY, HH:mm:ss");
   currentDayEl.html(thisDay);
 }, 1000);
-
+let taskLists = [
+  "Zero-Five Tasks",
+  "Zero-Six Tasks",
+  "Zero-Seven Tasks",
+  "Zero-Eight Tasks",
+  "Zero-Nine Tasks",
+  "Ten-Hundred Tasks",
+  "Eleven-Hundred Tasks",
+  "Twelve-Hundred Tasks",
+  "Thirteen-Hundred Tasks",
+  "Fourteen-Hundred Tasks",
+  "Fifteen-Hundred Tasks",
+  "Sixteen-Hundred Tasks",
+  "Seventeen-Hundred Tasks",
+];
 let zeroFiveTasks = JSON.parse(localStorage.getItem("Zero-Five Tasks")) || [];
 let zeroSixTasks = JSON.parse(localStorage.getItem("Zero-Six Tasks")) || [];
 let zeroSevenTasks = JSON.parse(localStorage.getItem("Zero-Seven Tasks")) || [];
@@ -116,9 +130,8 @@ function setTimeBlock(hour, index) {
       indexReference = $(event.target).parent().data("hour");
       taskEntry = $(event.target).parent().children().eq(1).val();
     }
-    console.log(taskEntry);
-    /*
-    let userTask = */
+
+    setUserInput(indexReference, taskEntry);
   });
   timeBlocksEl.append(newTimeBlock);
 }
@@ -133,4 +146,12 @@ function setStatus(timeFrame) {
     timeStatus = "future";
   }
   return timeStatus;
+}
+
+// Store user input in localstorage
+function setUserInput(reference, data) {
+  let index = reference - 5;
+
+  savedTasks[index].push(data);
+  localStorage.setItem(taskLists[index], JSON.stringify(savedTasks[index]));
 }
