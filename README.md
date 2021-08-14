@@ -27,4 +27,4 @@ The user should experience the following while utilizing the planner...
 
 # Link to Deployed Application
 
-https://oskwalker.github.io/Work-Day-Planner/
+https://oskwalker.github.io/Work-Day-Scheduler/
